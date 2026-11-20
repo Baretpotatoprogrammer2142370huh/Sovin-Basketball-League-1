@@ -193,6 +193,108 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
 #pad button.act { background:rgba(224,35,27,.9); }
 @media (pointer:coarse) { #pad { display:flex; } }
 @media (max-width:900px) { #menu { grid-template-columns:1fr; } .side { display:none; } .main { padding:24px; } .top h1 { font-size:40px; } }
+
+/* HOOPS ARENA 26 — menu inspirowane projektem użytkownika */
+#menu{
+  display:block!important; overflow:hidden; color:#fff;
+  background:
+    radial-gradient(ellipse at 12% 42%,rgba(15,17,24,.18),transparent 45%),
+    linear-gradient(180deg,rgba(93,10,15,.76),rgba(35,5,8,.91)),
+    repeating-linear-gradient(2deg,rgba(0,0,0,.22) 0 2px,transparent 2px 7px),
+    repeating-linear-gradient(91deg,#7b2025 0 3px,#8b292d 3px 8px,#6e1c22 8px 13px);
+}
+#menu:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.65;
+  background:repeating-linear-gradient(0deg,transparent 0 38px,rgba(8,8,12,.42) 39px 42px,transparent 43px 56px),
+  linear-gradient(90deg,rgba(0,0,0,.12),transparent 65%,rgba(0,0,0,.34));}
+#menu .side{display:none!important}
+#menu .main{position:absolute;inset:0;overflow-y:auto;padding:0 5vw 48px;z-index:1;background:transparent}
+.brandmark{position:absolute;z-index:4;left:5vw;top:5.2vh;line-height:.82;font-family:Impact,'Arial Black',Oswald,sans-serif;
+  font-style:italic;font-weight:1000;letter-spacing:-.055em;text-transform:uppercase;transform-origin:top left;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),left .55s,top .55s}
+.brand-hoops{font-size:clamp(42px,6vw,76px);color:#ff3035;text-shadow:2px 3px 0 rgba(0,0,0,.16)}
+.brand-arena{font-size:clamp(40px,5.6vw,70px);color:#fff;margin-left:-.06em}
+.brand-arena span{color:#21104f}
+#menu .landing-nav{position:absolute;left:5vw;top:35%;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+#menu .landing-nav button{background:none;color:#fff;padding:1px 0;font-family:Oswald,'Arial Narrow',sans-serif;
+  font-size:clamp(23px,3vw,36px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:left;
+  transition:color .18s,transform .22s,text-shadow .2s;line-height:1.18}
+#menu .landing-nav button:hover{color:#ff4448;transform:translateX(12px);text-shadow:0 0 18px #ff303544}
+#menu .top{display:flex;justify-content:center;text-align:center;align-items:center;min-height:0;margin:0 auto 28px;
+  padding:0 0 18px;border-bottom:1px solid rgba(255,255,255,.22);max-width:1100px}
+#menu .top h1{font-family:Oswald,sans-serif;font-size:clamp(34px,4.3vw,54px);letter-spacing:.16em;color:#fff}
+#menu .top h1:after{margin:12px auto 0;background:#ff3035}
+#menu .top p{display:none}
+#menu .scr:not(#s-home){padding-top:15vh;max-width:1200px;margin:0 auto}
+#menu .scr:not(#s-home) .top{animation:panelTitle .55s cubic-bezier(.2,.8,.2,1) both}
+#menu .scr:not(#s-home) .top h1{animation:panelTitle .55s cubic-bezier(.2,.8,.2,1) both}
+#menu .scr:not(#s-home) .top p{display:none}
+#menu .scr:not(#s-home) .tiles,#menu .scr:not(#s-home) .carousel,
+#menu .scr:not(#s-home) .squadbar,#menu .scr:not(#s-home) .ctrl,
+#menu .scr:not(#s-home) .tgrid,#menu .scr:not(#s-home) .maps,
+#menu .scr:not(#s-home) .help,#menu .scr:not(#s-home) .outgrid,
+#menu .scr:not(#s-home) .devbox,#menu .scr:not(#s-home) .bracket{animation:panelBody .65s .08s both}
+#menu .menu-back{display:none;position:absolute;z-index:5;top:28px;left:5vw;background:transparent;color:#fff;
+  font:700 13px Oswald,sans-serif;letter-spacing:.16em;padding:10px 0;cursor:pointer}
+#menu.subscreen .brandmark{left:50%;top:2.5vh;transform:translateX(-50%) scale(.48)}
+#menu.subscreen .menu-back{display:block}
+#menu.subscreen .main{padding-top:0}
+#menu.subscreen .scr:not(#s-home){padding-top:15vh}
+#menu.subscreen .landing-nav{display:none}
+#menu.subscreen .scr:not(#s-home) .top{padding-top:0}
+#menu.subscreen .scr:not(#s-home) .top h1{margin-top:0}
+#menu.subscreen .scr#s-home .top{display:none}
+#menu.subscreen .scr#s-home .tiles{display:none}
+#menu.subscreen .scr#s-home .btns{display:none}
+@keyframes panelTitle{from{opacity:0;transform:translateY(-18px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes panelBody{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+#menu .btn{border-radius:2px;background:#e3262d;box-shadow:0 8px 25px #12030866}
+#menu .btn.ghost{background:#1b1114;border:1px solid #a04b4e}
+#menu .tile,#menu .pcard,#menu .slot,#menu .hcard{border-radius:3px}
+#menu .tile{background:linear-gradient(145deg,#35191d,#130d10);border:1px solid #754044}
+#menu .tile:hover{border-color:#ff4248}
+@media(max-width:700px){
+ #menu .brandmark{top:5vh}
+ #menu .landing-nav{top:31%;gap:7px}
+ #menu .landing-nav button{font-size:clamp(21px,6vw,30px)}
+ #menu.subscreen .brandmark{top:3vh;transform:translateX(-50%) scale(.4)}
+ #menu .scr:not(#s-home){padding-top:17vh}
+ #menu .main{padding-left:5vw;padding-right:5vw}
+}
+
+
+/* ===== PALETA NEON COURT: granat / róż / żółć ===== */
+:root{--red:#f05aa6;--red2:#742b78;--blk:#080d25;--blk2:#101936;--blk3:#19254a;--wht:#f7f5ff;--dim:#aeb7d5;--line:rgba(164,180,255,.2);--gold:#ffd84d;--pink:#ff68b6;--navy:#090f2d}
+#menu{background:radial-gradient(ellipse at 78% 8%,rgba(255,104,182,.25),transparent 36%),radial-gradient(ellipse at 10% 90%,rgba(255,216,77,.15),transparent 34%),linear-gradient(135deg,#080d25 0%,#151d48 52%,#090d27 100%)}
+#menu:before{opacity:.5;background:radial-gradient(circle at 70% 35%,rgba(255,255,255,.08),transparent 28%),repeating-linear-gradient(135deg,transparent 0 42px,rgba(255,255,255,.018) 43px 44px)}
+.brand-hoops{color:#ff68b6;text-shadow:0 0 28px #ff68b655,3px 4px 0 #11183a}.brand-arena span{color:#ffd84d;text-shadow:0 0 24px #ffd84d55}
+#menu .landing-nav button:hover{color:#ffd84d;text-shadow:0 0 20px #ffd84d55}
+#menu .top h1:after{background:linear-gradient(90deg,#ff68b6,#ffd84d);box-shadow:0 0 18px #ff68b655}
+#menu .btn{background:linear-gradient(110deg,#ed56aa,#9c58d7 60%,#f2bf36);color:#fff;box-shadow:0 10px 30px #c54da944}
+#menu .btn.ghost{background:rgba(255,255,255,.055);border:1px solid #6873a7}
+#menu .tile{background:linear-gradient(145deg,rgba(40,54,105,.92),rgba(13,19,48,.96));border:1px solid rgba(255,104,182,.35);box-shadow:inset 0 1px rgba(255,255,255,.06),0 12px 28px #03071666}
+#menu .tile:before{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#ff68b6,#ffd84d);opacity:.85}
+#menu .tile:hover{border-color:#ffd84d;box-shadow:0 18px 42px #e65ca533}
+#menu .tile .ico{background:linear-gradient(135deg,#ff68b6,#8f5cda 65%,#ffd84d);box-shadow:0 8px 24px #e65ca544}
+#menu .tile .tag{background:#ffd84d;color:#151a38;font-weight:800}
+#menu .pcard{background:linear-gradient(160deg,#26345f,#111936 65%,#090f25);border-color:#59679b}
+#menu .pcard.gold{background:linear-gradient(160deg,#5b4b24,#242044 65%,#0a1026);border-color:#ffd84d}
+#menu .draft-art{background:radial-gradient(ellipse at 50% 78%,#ed5eaa55,transparent 60%),linear-gradient(160deg,#394a80,#171f48 72%,#0b1028)}
+#menu .slot.on{border-color:#ff68b6;background:linear-gradient(145deg,#39234f,#151d43)}
+#menu .slot.sel{border-color:#ffd84d;background:#ffd84d18}
+#menu .menu-back{color:#ffd84d}
+.player-tools{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 18px}.player-tools input{min-width:220px;flex:1}
+.player-tools select{min-width:170px}
+.compare-tools{display:flex;align-items:end;gap:14px;padding:16px 18px;margin-bottom:14px;background:linear-gradient(110deg,#202c59aa,#42244f77);border:1px solid #ff68b655;border-radius:12px}
+.compare-tools>div:not(.compare-vs){flex:1;min-width:0}.compare-tools label{display:block;font:700 11px Oswald;letter-spacing:.16em;color:#ffd84d;margin-bottom:7px}.compare-tools select{width:100%}.compare-vs{font:900 22px Oswald;color:#ff68b6;padding:0 5px}
+.compare-result{margin-bottom:18px}.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.compare-person{padding:14px;background:linear-gradient(145deg,#202d59,#111936);border:1px solid #59679b;border-radius:10px}.compare-person h3{font-size:20px;color:#fff}.compare-person strong{font:700 30px Oswald;color:#ffd84d}.compare-stat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:6px 0;border-bottom:1px solid #ffffff14;font-size:12px}.compare-stat span:nth-child(2){text-align:center;color:#aeb7d5}.compare-stat span:last-child{text-align:right}
+.player-library{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;max-height:47vh;overflow:auto;padding:2px 5px 12px 2px}.lib-card{position:relative;min-width:0;padding:10px;border:1px solid #59679b;border-radius:10px;background:linear-gradient(150deg,#26345f,#111936 75%);cursor:pointer;transition:.18s}.lib-card:hover{transform:translateY(-3px);border-color:#ffd84d}.lib-card.selected{border-color:#ff68b6;box-shadow:0 0 0 2px #ff68b633}.lib-card canvas{display:block;width:100%;height:130px;object-fit:contain;border-radius:7px;background:radial-gradient(ellipse at 50% 90%,#ed5eaa55,transparent 65%),#101936}.lib-card h3{font-size:17px;margin:8px 0 2px}.lib-card small{color:#b5bfdf}.lib-card .ovr{position:absolute;right:16px;top:16px;font:700 22px Oswald;color:#ffd84d;text-shadow:0 2px 5px #000}.lib-card .kind{display:inline-block;margin-top:7px;padding:3px 7px;border-radius:20px;background:#ff68b622;color:#ff9dce;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:650px){.compare-tools{flex-direction:column;align-items:stretch}.compare-vs{text-align:center}.compare-grid{grid-template-columns:1fr}.player-library{grid-template-columns:repeat(2,minmax(0,1fr));max-height:42vh}}
+
+
+/* Klubowa kariera */
+.career-panel{display:grid;gap:18px}.career-hero{padding:22px;border-radius:18px;background:linear-gradient(120deg,#172b58,#43265e 58%,#8b3b77);border:1px solid #8293d8;box-shadow:0 18px 40px #0006}.career-hero h2{font-size:32px}.career-hero p{color:#d8def8;line-height:1.55}.career-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.career-pill{padding:7px 12px;border-radius:30px;background:#ffffff18;border:1px solid #ffffff2c;font-size:12px}.career-columns{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:18px}.career-card{background:linear-gradient(155deg,#172344,#101426);border:1px solid #53618e;border-radius:16px;padding:18px;min-width:0}.career-card h3{font-size:21px;margin-bottom:12px;color:#f6d95a}.league-table{width:100%;border-collapse:collapse;font-size:13px}.league-table th,.league-table td{padding:9px 7px;border-bottom:1px solid #ffffff18;text-align:center}.league-table th:first-child,.league-table td:first-child{text-align:left}.league-table th{color:#b8c6f5;font-size:11px;letter-spacing:.08em}.league-table tr.user-row{background:linear-gradient(90deg,#e94e9b33,#f4d34b18);font-weight:700}.league-table tr.leader td:first-child:before{content:'🏆 ';}.fixture-list{display:grid;gap:8px;max-height:330px;overflow:auto}.fixture{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;background:#ffffff0b;border:1px solid #ffffff14;border-radius:9px;font-size:12px}.fixture.next{border-color:#f4d34b;background:#f4d34b18}.club-rosters{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;margin-top:10px}.club-roster{padding:11px;border-radius:10px;background:#ffffff0a;border:1px solid #ffffff16}.club-roster b{display:block;color:#f4d34b;font:700 13px Oswald;margin-bottom:5px}.club-roster span{display:block;color:#c4cce4;font-size:11px;line-height:1.5}.fixture.done{opacity:.68}.career-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.career-note{color:#b8c1dd;font-size:13px;line-height:1.6}.trophy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}.trophy-card{padding:24px;border-radius:18px;text-align:center;background:radial-gradient(circle at 50% 0%,#f8dc7738,transparent 55%),linear-gradient(150deg,#242c4b,#111525);border:1px solid #c4a65b}.trophy-icon{font-size:64px;filter:drop-shadow(0 8px 14px #f2c94c55)}.trophy-card h3{color:#f4d34b;font-size:22px;margin:10px 0}.trophy-card p{color:#c5cbe0;font-size:12px;line-height:1.5}.empty-trophy{padding:36px;text-align:center;border:1px dashed #59658c;border-radius:16px;color:#b8c1dd}.career-start{padding:24px;border-radius:18px;background:linear-gradient(135deg,#18294f,#39265a 60%,#6a315f);border:1px solid #6577b5}.career-start h2{font-size:28px}.career-start p{color:#d5dcf5;line-height:1.6;max-width:750px}
+@media(max-width:900px){.career-columns{grid-template-columns:1fr}.league-table{font-size:11px}.league-table th,.league-table td{padding:7px 4px}}
+
 </style>
 </head>
 <body class="inmenu">
@@ -204,6 +306,8 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
 <button id="pauseBtn">Pauza</button>
 
 <div id="menu">
+  <div class="brandmark" id="brandmark"><div class="brand-hoops">HOOPS</div><div class="brand-arena">ARENA<span>26</span></div></div>
+  <button class="menu-back" id="menuBack" type="button">← MENU GŁÓWNE</button>
   <aside class="side">
     <div class="logo">
       <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#e0231b"/><g fill="none" stroke="#111" stroke-width="3">
@@ -212,12 +316,12 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
     </div>
     <nav class="nav">
       <button data-s="home" class="on"><i>▶</i>Graj</button>
-      <button data-s="nba"><i>🏀</i>Drużyny NBA</button>
       <button data-s="squad"><i>👥</i>Zawodnicy</button>
+      <button data-s="career"><i>🏆</i>Mistrzostwo</button>
+      <button data-s="trophy"><i>🥇</i>Gablota</button>
       <button data-s="dev"><i>⬆</i>Rozwój</button>
       <button data-s="outfit"><i>👕</i>Strój</button>
       <button data-s="maps"><i>🗺</i>Mapy</button>
-      <button data-s="tour"><i>🏆</i>Turniej 3v3</button>
       <button data-s="help"><i>?</i>Sterowanie</button>
     </nav>
     <div class="profile" id="profile"></div>
@@ -225,11 +329,23 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
 
   <main class="main">
     <section class="scr on" id="s-home">
+      <nav class="landing-nav" id="landingNav">
+        <button data-s="play">GRAJ</button>
+        <button data-s="squad">ZAWODNICY</button>
+        <button data-s="outfit">USTAWIENIA STROJU</button>
+        <button data-s="maps">MAPY</button>
+        <button data-s="help">POMOC</button>
+        <button data-s="career">MISTRZOSTWO</button>
+        <button data-s="trophy">GABLOTA</button>
+        <button data-s="dev">ROZWÓJ</button>
+      </nav>
+    </section>
+    <section class="scr" id="s-play">
       <header class="top"><div><h1>Wybierz tryb</h1></div>
-        <p>Składy ułożysz w zakładce Zawodnicy albo wybierz drużyny NBA. Każdy mecz daje XP, a poziomy dają punkty rozwoju.</p></header>
+        <p>Wybierz klasyczny mecz, turniej 3v3 albo drużyny NBA. Zakładka Zawodnicy to galeria całej ligi, legend i twoich graczy.</p></header>
       <div class="btns" style="margin:0 0 26px;align-items:center">
         <label style="font-size:13px;color:var(--dim);display:flex;gap:10px;align-items:center">Poziom botów
-          <select class="dark" id="diff"><option value="0.6">Łatwy</option><option value="0.8" selected>Normalny</option><option value="1">Trudny</option></select></label>
+          <select class="dark" id="diff"><option value="0.6">Łatwy</option><option value="0.8" selected>Normalny</option><option value="1">Trudny</option><option value="1.22">HARDCORE</option></select></label>
         <label style="font-size:13px;color:var(--dim);display:flex;gap:8px;align-items:center"><input type="checkbox" id="randLine"> Losowe składy</label>
       </div>
       <div class="tiles" id="tiles"></div>
@@ -248,8 +364,24 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
     </section>
 
     <section class="scr" id="s-squad">
+      <header class="top"><div><h1>Zawodnicy</h1></div><p>Przeglądaj wszystkich zawodników, legendy GOAT i graczy drużyn NBA. Wybierz dwóch, aby porównać ich statystyki.</p></header>
+      <div class="player-tools">
+        <input id="playerSearch" class="dark" type="search" placeholder="Szukaj zawodnika...">
+        <select id="playerFilter" class="dark"><option value="all">Wszyscy zawodnicy</option><option value="custom">Hoops Arena</option><option value="goat">GOAT</option><option value="nba">NBA</option></select>
+        <select id="playerSort" class="dark"><option value="ovr">Sortuj: OVR</option><option value="name">Sortuj: nazwisko</option><option value="height">Sortuj: wzrost</option></select>
+      </div>
+      <div class="compare-tools">
+        <div><label>PORÓWNAJ A</label><select id="compareA" class="dark"></select></div>
+        <div class="compare-vs">VS</div>
+        <div><label>PORÓWNAJ B</label><select id="compareB" class="dark"></select></div>
+      </div>
+      <div id="compareResult" class="compare-result"></div>
+      <div id="playerLibrary" class="player-library"></div>
+    </section>
+
+    <section class="scr" id="s-lineup">
       <header class="top"><div><h1 id="squadTitle">Zawodnicy</h1></div>
-        <p>Kliknij puste miejsce, potem kartę. Przewijaj w bok kółkiem myszy lub strzałkami.</p></header>
+        <p>Dobierz skład do wybranego trybu. Kliknij miejsce w składzie, a następnie zawodnika.</p></header>
       <div class="squadbar" id="slots"></div>
       <div id="goatChoice" style="display:none;align-items:center;gap:14px;margin:0 0 20px;flex-wrap:wrap">
         <label for="goatPick" style="font-family:Oswald;font-size:18px">WYBIERZ GOATA:</label>
@@ -271,6 +403,14 @@ kbd { background:#23232a; border:1px solid #444; border-bottom-width:3px; border
       </div>
     </section>
 
+    <section class="scr" id="s-career">
+      <header class="top"><div><h1>Mistrzostwo</h1></div><p>Poprowadź własny klub od Hoops Arena, przez NBA, aż po starcie z trzema GOAT-ami. Wyniki, tabela i rozwój zawodników zapisują się automatycznie.</p></header>
+      <div id="careerPanel" class="career-panel"></div>
+    </section>
+    <section class="scr" id="s-trophy">
+      <header class="top"><div><h1>Gablota</h1></div><p>Twoje zdobyte trofea. Każdy puchar zostaje tutaj na stałe.</p></header>
+      <div id="trophyPanel" class="trophy-grid"></div>
+    </section>
     <section class="scr" id="s-dev">
       <header class="top"><div><h1>Rozwój</h1></div>
         <p>Każdy poziom daje 2 punkty rozwoju konkretnego zawodnika. Maksymalnie +15 do każdej statystyki.</p></header>
@@ -569,7 +709,10 @@ function getP(id) {
 
 let career = null;
 try { career = JSON.parse(localStorage.getItem('hoops_career_v1')); } catch (e) {}
+if(career && !career.club) career=null;
+let TROPHIES=[];try{TROPHIES=JSON.parse(localStorage.getItem('hoops_trophies_v1'))||[]}catch(e){}
 function saveCareer() { try { localStorage.setItem('hoops_career_v1', JSON.stringify(career)); } catch (e) {} }
+function saveTrophies(){try{localStorage.setItem('hoops_trophies_v1',JSON.stringify(TROPHIES))}catch(e){}}
 
 // ============================ WIDOK ============================
 let G = null;
@@ -1660,14 +1803,14 @@ function drawPortrait(cnv, p, big) {
 
 // ============================ MENU ============================
 let PEND = null, SEL = 0, TOUR = null, OPICK = BASE[0].id, DEVP = null, NBA_SEL = { a: null, b: null };
-const SLOTS_FOR = { '1v1': 2, '2v2': 4, '3v3': 6, career: 1, train: 1, tour: 3, goat: 3 };
-const MODE_NAME = { '1v1': 'Szybki 1 na 1', '2v2': '2 na 2', '3v3': '3 na 3', career: 'Kariera 1 na 1', train: 'Trening rzutów', tour: 'Turniej 3 na 3', goat: '3 VS GOAT' };
+const SLOTS_FOR = { '1v1': 2, '2v2': 4, '3v3': 6, career: 3, train: 1, tour: 3, goat: 3 };
+const MODE_NAME = { '1v1': 'Szybki 1 na 1', '2v2': '2 na 2', '3v3': '3 na 3', career: 'Mistrzostwo · Kariera klubu', train: 'Trening rzutów', tour: 'Turniej 3 na 3', goat: '3 VS GOAT' };
 
 const TILES = [
   { mode:'1v1', ico:'1', name:'Szybki 1 na 1', desc:'Ty kontra bot. Pierwszy do 21 punktów.', tag:'Szybki' },
   { mode:'2v2', ico:'2', name:'2 na 2', desc:'Ty i kolega kontra dwóch botów.', tag:'Drużyna' },
   { mode:'3v3', ico:'3', name:'3 na 3', desc:'Pełne boisko, sześciu zawodników.', tag:'Drużyna' },
-  { mode:'career', ico:'★', name:'Kariera 1 na 1', desc:'Dziewięciu rywali od najsłabszego. Po każdej wygranej rozwijasz zawodnika.', tag:'Kariera' },
+  { mode:'career', ico:'🏆', name:'Mistrzostwo · Kariera klubu', desc:'Zbuduj ekipę 3v3, wygraj Hoops Arena, awansuj do NBA i zdobądź puchar GOAT Challenge.', tag:'KARIERA' },
   { mode:'nba', ico:'NBA', name:'Drużyny NBA', desc:'Wybierz dwie drużyny z pięcioma zawodnikami każda i zagraj 5 na 5.', tag:'NBA' },
   { mode:'train', ico:'◎', name:'Trening rzutów', desc:'60 sekund bez obrony. Zdobywaj jak najwięcej punktów.', tag:'Trening' },
   { mode:'tour', ico:'🏆', name:'Turniej 3 na 3', desc:'Drabinka: cztery drużyny, półfinały i finał.', tag:'Turniej' },
@@ -1677,21 +1820,65 @@ const TILES = [
 function setScreen(name) {
   document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.s === name));
   document.querySelectorAll('.scr').forEach(s => s.classList.toggle('on', s.id === 's-' + name));
+  const menu = $('menu');
+  menu.classList.toggle('subscreen', name !== 'home');
+  if (name === 'squad') renderPlayerLibrary();
   if (name === 'outfit') renderOutfit();
   if (name === 'maps') renderMaps();
   if (name === 'tour') renderBracket();
   if (name === 'nba') renderNBA();
   if (name === 'dev') renderDev();
+  if (name === 'career') renderCareer();
+  if (name === 'trophy') renderTrophies();
 }
-document.querySelectorAll('.nav button').forEach(b => b.onclick = () => setScreen(b.dataset.s));
+document.querySelectorAll('.nav button, .landing-nav button').forEach(b => b.onclick = () => setScreen(b.dataset.s));
+$('menuBack').onclick = () => setScreen('home');
+
+function renderPlayerLibrary(){
+  const all=ALL.slice();
+  const a=$('compareA'),b=$('compareB');
+  if(!a.options.length){all.forEach(p=>{a.add(new Option(p.name,p.id));b.add(new Option(p.name,p.id));});a.value=BASE[0].id;b.value=NBA_BASE[0]?.id||BASE[1].id;}
+  drawCompare(); drawPlayerCards();
+}
+function drawCompare(){
+  const pa=BYID[$('compareA').value],pb=BYID[$('compareB').value],box=$('compareResult');
+  if(!pa||!pb){box.innerHTML='';return;}
+  const A=getP(pa.id),B=getP(pb.id);
+  const statRows=STAT.map(k=>`<div class="compare-stat"><span>${SN[k]}</span><span>${A.stats[k]}</span><span>${B.stats[k]}</span></div>`).join('');
+  box.innerHTML=`<div class="compare-grid"><div class="compare-person"><h3>${A.name}</h3><strong>${ovr(A)} OVR</strong><div><small>${A.h} cm · ${A.pos}</small></div></div><div class="compare-person"><h3>${B.name}</h3><strong>${ovr(B)} OVR</strong><div><small>${B.h} cm · ${B.pos}</small></div></div></div><div class="compare-person" style="margin-top:8px">${statRows}</div>`;
+}
+function drawPlayerCards(){
+  const box=$('playerLibrary');if(!box)return;box.innerHTML='';
+  const q=$('playerSearch').value.trim().toLowerCase(),filter=$('playerFilter').value,sort=$('playerSort').value;
+  let list=ALL.filter(p=>{
+    const isGoat=GOAT_IDS.includes(p.id),isNBA=p.id.startsWith('nba_');
+    return (!q||p.name.toLowerCase().includes(q)||p.full.toLowerCase().includes(q)) &&
+      (filter==='all'||filter==='goat'&&isGoat||filter==='nba'&&isNBA||filter==='custom'&&!isGoat&&!isNBA);
+  });
+  list.sort((x,y)=>sort==='name'?x.name.localeCompare(y.name):sort==='height'?y.h-x.h:ovr(getP(y.id))-ovr(getP(x.id)));
+  for(const p of list){
+    const card=document.createElement('div');card.className='lib-card'+([$('compareA').value,$('compareB').value].includes(p.id)?' selected':'');
+    const c=document.createElement('canvas');c.width=220;c.height=260;
+    if(FACE_IDS.has(p.id)){const img=new Image();img.src=p.id+'1.png';img.onload=()=>{const cx=c.getContext('2d');cx.clearRect(0,0,c.width,c.height);cx.drawImage(img,0,0,c.width,c.height)};img.onerror=()=>drawPortrait(c,getP(p.id),false);}else drawPortrait(c,getP(p.id),false);
+    const kind=GOAT_IDS.includes(p.id)?'GOAT':p.id.startsWith('nba_')?'NBA':'HOOPS ARENA';
+    card.innerHTML=`<span class="ovr">${ovr(getP(p.id))}</span>`;card.appendChild(c);
+    const h=document.createElement('h3');h.textContent=p.name;card.appendChild(h);
+    const sm=document.createElement('small');sm.textContent=`${p.pos} · ${p.h} cm`;card.appendChild(sm);
+    const tag=document.createElement('div');tag.className='kind';tag.textContent=kind;card.appendChild(tag);
+    card.onclick=()=>{if($('compareA').value===p.id)$('compareB').value=p.id;else if($('compareB').value===p.id)$('compareA').value=p.id;else $('compareB').value=p.id;drawCompare();drawPlayerCards();};
+    box.appendChild(card);
+  }
+  if(!list.length)box.innerHTML='<p style="color:var(--dim)">Nie znaleziono zawodników.</p>';
+}
+$('playerSearch').addEventListener('input',drawPlayerCards);$('playerFilter').onchange=drawPlayerCards;$('playerSort').onchange=drawPlayerCards;
+$('compareA').onchange=()=>{drawCompare();drawPlayerCards()};$('compareB').onchange=()=>{drawCompare();drawPlayerCards()};
 
 function renderProfile() {
   const box = $('profile');
-  if (career) {
-    const pr = prog(career.pid), lv = lvlOf(pr.xp), into = pr.xp % 120;
-    box.innerHTML = `<b>${BYID[career.pid].name}</b>Kariera: ${career.wins}/${career.ladder.length} wygranych<br>Poziom ${lv} · ${into}/120 XP
-      <div class="xpbar"><i style="width:${into / 120 * 100}%"></i></div>Punkty rozwoju: <span style="color:var(--gold)">${pr.pts}</span>`;
-  } else {
+  if (career && career.club) {
+    const names=career.club.map(id=>BYID[id]?.name||id).join(' · ');
+    box.innerHTML = `<b>${names}</b>${({arena:'Liga Hoops Arena',nba:'Liga NBA',goat:'GOAT Challenge',complete:'Mistrzostwo zdobyte',eliminated:'Sezon zakończony'})[career.stage]||'Kariera klubu'}<br>Etap ${career.stage==='arena'?1:career.stage==='nba'?2:3} / 3`;
+  } else if (career) { box.innerHTML = `<b>Stara kariera</b>Rozpocznij nową karierę klubu 3v3.`; } else {
     box.innerHTML = `<b>Kariera</b>Brak aktywnej kariery. Zacznij nową w zakładce Graj.`;
   }
 }
@@ -1722,13 +1909,13 @@ $('diff').onchange = () => { ACC_MUL = parseFloat($('diff').value); };
 ACC_MUL = parseFloat($('diff').value);
 
 function pickMode(mode) {
-  if (mode === 'career' && career && career.wins < career.ladder.length) return startCareerMatch();
+  if (mode === 'career' && career && !['complete','eliminated'].includes(career.stage)) { setScreen('career'); return; }
   if (mode === 'nba') return setScreen('nba');
   PEND = { mode, slots: new Array(SLOTS_FOR[mode]).fill(null) };
   SEL = 0;
   $('squadTitle').textContent = MODE_NAME[mode];
   if ($('randLine').checked) { randomFill(); return playPending(); }
-  setScreen('squad');
+  setScreen('lineup');
   renderSquad();
 }
 
@@ -1789,7 +1976,8 @@ function renderSquad() {
 }
 function teamOfSlot(i) {
   const m = PEND.mode;
-  if (m === '1v1' || m === 'career') return i;
+  if (m === '1v1') return i;
+  if (m === 'career') return 0;
   if (m === '2v2') return i < 2 ? 0 : 1;
   if (m === '3v3') return i < 3 ? 0 : 1;
   return 0;
@@ -1835,7 +2023,7 @@ function renderCarousel() {
 }
 $('carousel').addEventListener('wheel', e => { e.preventDefault(); $('carousel').scrollLeft += e.deltaY + e.deltaX; }, { passive: false });
 window.addEventListener('keydown', e => {
-  if (!$('s-squad').classList.contains('on')) return;
+  if (!$('s-lineup').classList.contains('on')) return;
   if (e.key === 'ArrowRight') $('carousel').scrollLeft += 260;
   if (e.key === 'ArrowLeft') $('carousel').scrollLeft -= 260;
 });
@@ -1858,16 +2046,119 @@ function playPending() {
   if (m === 'train') return startMatch(m, [[S[0]]], null);
   if (m === 'goat') return startMatch('goat', [[S[0], S[1], S[2]], [getP($('goatPick').value)]], null);
   if (m === 'career') {
-    career = { pid: PEND.slots[0], wins: 0, ladder: NORMAL_BASE.filter(b => b.id !== PEND.slots[0]).sort((a, b) => ovr(a) - ovr(b)).map(b => b.id) };
+    career = createClubCareer(PEND.slots);
     saveCareer();
-    return startCareerMatch();
+    setScreen('career');
+    renderCareer();
+    return;
   }
   if (m === 'tour') return createTournament(PEND.slots);
 }
 function startCareerMatch() {
-  const opp = BYID[career.ladder[career.wins]];
-  startMatch('career', [[getP(career.pid)], [getP(opp.id)]], null);
+  if (!career || career.stage === 'complete' || career.stage === 'eliminated') return setScreen('career');
+  while((career.stage==='arena'||career.stage==='nba') && career.round<career.rounds.length && !(career.rounds[career.round]||[]).some(m=>m.includes(0))){autoResolveRound(career);career.round++;if(career.round>=career.rounds.length){finishClubLeague();return setScreen('career');}saveCareer();}
+  if (career.stage === 'goat') {
+    const goats = ['goat_jordan','goat_kobe','goat_lebron'];
+    startMatch('career', [career.club.map(getP), goats.map(getP)], null, 0);
+    return;
+  }
+  const round = career.rounds[career.round];
+  const fixture = round && round.find(m => m.includes(0));
+  if (!fixture) return setScreen('career');
+  const oppIndex = fixture[0] === 0 ? fixture[1] : fixture[0];
+  const opp = career.teams[oppIndex];
+  startMatch('career', [career.club.map(getP), opp.ids.map(getP)], null, 0);
 }
+
+function makeRounds(teamCount) {
+  const list = Array.from({length:teamCount},(_,i)=>i);
+  if (list.length % 2) list.push(null);
+  const rounds=[];
+  for(let r=0;r<list.length-1;r++){
+    const games=[];
+    for(let i=0;i<list.length/2;i++){
+      const a=list[i],b=list[list.length-1-i];
+      if(a!==null&&b!==null) games.push([a,b]);
+    }
+    rounds.push(games);
+    list.splice(1,0,list.pop());
+  }
+  return rounds;
+}
+function createClubCareer(ids) {
+  const pool=shuffle(NORMAL_BASE.map(p=>p.id).filter(id=>!ids.includes(id)));
+  while(pool.length<15){const candidates=shuffle(NORMAL_BASE.map(p=>p.id).filter(id=>!ids.includes(id)));pool.push(...candidates.slice(0,Math.min(15-pool.length,candidates.length)));}
+  const teams=[{name:'TWÓJ KLUB',ids:ids.slice(),user:true}];
+  for(let i=0;i<5;i++) teams.push({name:['RIM BREAKERS','NIGHT OWLS','COURT KINGS','SKY FORCE','DUNK UNION'][i],ids:pool.slice(i*3,i*3+3),user:false});
+  const extras=pool.slice(15);
+  return {version:2,stage:'arena',club:ids.slice(),teams,rounds:makeRounds(6),round:0,table:teams.map((t,i)=>({team:i,pts:0,w:0,d:0,l:0,pf:0,pa:0})),history:[],extras,created:Date.now()};
+}
+function simulateLeagueGame(a,b) {
+  const rating=ids=>ids.reduce((sum,id)=>sum+ovr(getP(id)),0)/ids.length;
+  const ra=rating(a.ids),rb=rating(b.ids),scoreA=Math.max(8,Math.round(ra*.28+Math.random()*9)),scoreB=Math.max(8,Math.round(rb*.28+Math.random()*9));
+  return [scoreA,scoreB];
+}
+function recordLeagueResult(c,ai,bi,sa,sb,label) {
+  const A=c.table.find(x=>x.team===ai),B=c.table.find(x=>x.team===bi);
+  A.pf+=sa;A.pa+=sb;B.pf+=sb;B.pa+=sa;
+  if(sa>sb){A.w++;A.pts+=3;B.l++;}else if(sb>sa){B.w++;B.pts+=3;A.l++;}else{A.d++;B.d++;A.pts++;B.pts++;}
+  c.history.push({a:ai,b:bi,sa,sb,label:label||''});
+}
+function autoResolveRound(c) {
+  const games=c.rounds[c.round]||[];
+  games.filter(g=>!g.includes(0)).forEach(([a,b])=>{const [sa,sb]=simulateLeagueGame(c.teams[a],c.teams[b]);recordLeagueResult(c,a,b,sa,sb,'AI');});
+}
+function grantClubGrowth() {
+  career.club.forEach(id=>{
+    const pr=prog(id);pr.xp+=65;
+    const stat=STAT[Math.floor(Math.random()*STAT.length)];
+    pr.boosts[stat]=Math.min(MAX_BOOST,(pr.boosts[stat]||0)+1);
+  });
+  saveProg();
+}
+function advanceClubRound(won,sa,sb) {
+  const fixture=career.rounds[career.round].find(m=>m.includes(0));
+  const opp=fixture[0]===0?fixture[1]:fixture[0];
+  recordLeagueResult(career,0,opp,sa,sb,'TY');
+  autoResolveRound(career);
+  if(won) grantClubGrowth();
+  career.round++;
+  if(career.round>=career.rounds.length) finishClubLeague();
+  saveCareer();renderProfile();
+}
+function finishClubLeague(){
+  const standings=career.table.slice().sort((a,b)=>b.pts-a.pts||(b.pf-b.pa)-(a.pf-a.pa));career.table=standings;
+  if(standings[0]?.team===0){
+    career.stage=career.stage==='arena'?'nba':'goat';
+    if(career.stage==='nba'){
+      const nbaTeams=NBA_TEAMS.map(t=>({name:t.name.toUpperCase(),ids:t.ids.slice(0,3),user:false,uni:t.uni||{color:t.color,shorts:'#fff',sock:'#fff',shoe:'#111'}}));
+      career.teams=[{name:'TWÓJ KLUB',ids:career.club.slice(),user:true},...nbaTeams];
+      career.rounds=makeRounds(career.teams.length);career.round=0;career.table=career.teams.map((t,i)=>({team:i,pts:0,w:0,d:0,l:0,pf:0,pa:0}));career.history=[];
+    }
+  }else career.stage='eliminated';
+  saveCareer();
+}
+function renderCareer() {
+  const box=$('careerPanel');if(!box)return;
+  if(!career){box.innerHTML=`<div class="career-start"><h2>Droga po mistrzostwo</h2><p>Wybierz trzech zawodników, stwórz własny klub i przejdź przez ligę Hoops Arena, ligę NBA oraz finał z trójką GOAT-ów. Twoi zawodnicy zdobywają doświadczenie i trwałe ulepszenia statystyk.</p><div class="career-actions"><button class="btn" onclick="pickMode('career')">Utwórz klub ▶</button></div></div>`;return;}
+  const stageName={arena:'LIGA HOOPS ARENA',nba:'LIGA NBA',goat:'GOAT CHALLENGE',complete:'MISTRZOSTWO ZDOBYTE',eliminated:'KONIEC SEZONU'}[career.stage]||'KARIERA KLUBU';
+  const table=career.table||[];const rows=table.slice().sort((a,b)=>b.pts-a.pts||(b.pf-b.pa)-(a.pf-a.pa));
+  const tableHtml=`<table class="league-table"><thead><tr><th># / Klub</th><th>M</th><th>W</th><th>R</th><th>P</th><th>PKT</th><th>+/-</th></tr></thead><tbody>${rows.map((r,i)=>{const t=career.teams[r.team];return `<tr class="${r.team===0?'user-row':''} ${i===0?'leader':''}"><td>${i+1}. ${t.name}</td><td>${r.w+r.d+r.l}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td><b>${r.pts}</b></td><td>${r.pf-r.pa>0?'+':''}${r.pf-r.pa}</td></tr>`}).join('')}</tbody></table>`;
+  let nextText='';let nextButton='';
+  if(career.stage==='arena'||career.stage==='nba'){
+    const fixture=career.rounds[career.round]?.find(m=>m.includes(0));const oi=fixture?(fixture[0]===0?fixture[1]:fixture[0]):null;
+    nextText=oi==null?'Sezon zakończony':`Następny mecz: TWÓJ KLUB vs ${career.teams[oi].name}`;
+    nextButton=`<button class="btn" onclick="startCareerMatch()">${career.round===0?'Rozpocznij ligę':'Rozegraj następny mecz'} ▶</button>`;
+  } else if(career.stage==='goat') {nextText='Ostatni etap. Zmierz się z Jordanem, Kobe i LeBronem.';nextButton=`<button class="btn" onclick="startCareerMatch()">Zagraj finał GOAT ▶</button>`;}
+  else if(career.stage==='complete') {nextText='Masz już puchar! Zachowujesz ulepszony skład i możesz dalej grać.';nextButton=`<button class="btn" onclick="pickMode('career')">Nowa kariera klubu</button>`;}
+  else {nextText='Twoja drużyna nie wygrała ligi. Możesz rozpocząć nową karierę.';nextButton=`<button class="btn" onclick="pickMode('career')">Spróbuj ponownie</button>`;}
+  const fixtures=(career.history||[]).slice().reverse().map(m=>`<div class="fixture done"><span>${career.teams[m.a].name} ${m.sa} : ${m.sb} ${career.teams[m.b].name}</span><b>✓</b></div>`).join('')||'<p class="career-note">Mecze pojawią się tutaj po rozpoczęciu ligi.</p>';
+  const rosters=(career.teams||[]).map(t=>`<div class="club-roster"><b>${t.name}</b><span>${t.ids.map(id=>BYID[id]?.name||id).join(' · ')}</span></div>`).join('');
+  const reserves=career.stage==='arena'&&career.extras?.length?`<p class="career-note">Rezerwowi: ${career.extras.map(id=>BYID[id]?.name||id).join(' · ')}</p>`:'';
+  box.innerHTML=`<div class="career-hero"><h2>${stageName}</h2><p>${nextText}</p><div class="career-meta"><span class="career-pill">ETAP ${career.stage==='arena'?1:career.stage==='nba'?2:3}/3</span><span class="career-pill">Mecze: ${career.round||0}/${career.rounds?.length||1}</span><span class="career-pill">Zespół: ${career.club.map(id=>BYID[id]?.name||id).join(' · ')}</span></div><div class="career-actions">${nextButton}<button class="btn ghost" onclick="openMenu('home')">Menu główne</button></div></div><div class="career-columns"><div class="career-card"><h3>Tabela ligi</h3>${tableHtml}<p class="career-note">Zwycięstwo: 3 pkt · remis: 1 pkt · porażka: 0 pkt. Przy równej liczbie punktów decyduje bilans punktowy.</p></div><div class="career-card"><h3>Ostatnie wyniki</h3><div class="fixture-list">${fixtures}</div><p class="career-note">Po każdym meczu twoi zawodnicy zdobywają doświadczenie. Po wygranej otrzymują też losowe trwałe ulepszenie statystyki.</p></div></div><div class="career-card"><h3>Składy ligi</h3><div class="club-rosters">${rosters}</div>${reserves}</div>`;
+}
+function renderTrophies(){const box=$('trophyPanel');if(!box)return;const trophies=TROPHIES;box.innerHTML=trophies.length?trophies.map(t=>`<div class="trophy-card"><div class="trophy-icon">🏆</div><h3>${t.name}</h3><p>${t.date||'Hoops Arena'}<br>Klub: ${(t.club||[]).map(id=>BYID[id]?.name||id).join(' · ')}</p></div>`).join(''):'<div class="empty-trophy">🏆<h2>Twoja gablota jest pusta</h2><p>Wygraj Hoops Arena, NBA i finał GOAT Challenge, aby zdobyć pierwsze trofeum.</p></div>';}
+
 
 // ============================ ROZWÓJ ============================
 function renderDev() {
@@ -1882,7 +2173,7 @@ function renderDev() {
     <div style="color:var(--dim);font-size:13px;margin-top:4px">Poziom ${lv} · ${into}/120 XP</div>
     <div class="xpbar"><i style="width:${into / 120 * 100}%"></i></div>`;
   $('devPts').innerHTML = `Punkty rozwoju: <b>${pr.pts}</b>`;
-  $('devCont').style.display = career && career.wins < career.ladder.length ? 'block' : 'none';
+  $('devCont').style.display = career && career.pid && career.wins < career.ladder.length ? 'block' : 'none';
   $('devCard').innerHTML = `<div class="pfull" style="margin-bottom:14px">${b.full} · ${b.body.height} cm · ${b.body.weight} kg · OVR ${ovr(pg)}</div>` +
     STAT.map(k => {
       const boost = pr.boosts[k] || 0, cur = pg.stats[k];
@@ -2052,20 +2343,19 @@ function finishMatch(winner) {
   const won = winner === 0, st = G.stats;
   const xpText = settleMatch(won);
   const body = `Wynik: ${G.score[0]} : ${G.score[1]}\nRzuty: ${st.shots} · trafienia: ${st.made} · bloki: ${st.blocks}\nPrzechwyty: ${st.steals} · faule: ${st.fouls} · kontuzje: ${st.injuries}\n${xpText}`;
-  const mode = G.mode, cfgT = G.cfgTeams, cfgU = G.cfgUni, cfgH = G.cfgH;
+  const mode = G.mode, cfgT = G.cfgTeams, cfgU = G.cfgUni, cfgH = G.cfgH, matchScore = G.score.slice();
   G = null;
   if (mode === 'career') {
-    if (won) {
-      career.wins++; saveCareer();
-      if (career.wins >= career.ladder.length) { career = null; saveCareer(); return showRes('MISTRZ LIGI!', body, [{ l: 'Menu', f: () => openMenu('home') }]); }
-      return showRes('WYGRANA!', body, [
-        { l: 'Rozwój zawodnika ▶', f: () => { openMenu('dev'); } },
-        { l: 'Następny rywal ▶', f: startCareerMatch },
-        { l: 'Menu', alt: 1, f: () => openMenu('home') }
-      ]);
+    if(career?.stage==='goat'){
+      if(won){career.stage='complete';career.trophies=career.trophies||[];const trophy={name:'MISTRZOSTWO HOOPS ARENA',date:new Date().toLocaleDateString('pl-PL'),club:career.club.slice()};career.trophies.push(trophy);TROPHIES.push(trophy);saveTrophies();saveCareer();grantClubGrowth();return showRes('MISTRZOSTWO! 🏆',body+'\n\nPokonałeś trójkę GOAT-ów. Puchar trafił do Gabloty, a ulepszony skład pozostaje do dalszej gry.',[{l:'Zobacz gablotę',f:()=>openMenu('trophy')},{l:'Kontynuuj',alt:1,f:()=>openMenu('career')}]);}
+      career.stage='eliminated';saveCareer();return showRes('GOAT CHALLENGE — PRZEGRANA',body,[{l:'Menu',f:()=>openMenu('career')}]);
     }
-    career = null; saveCareer();
-    return showRes('PRZEGRANA', body + '\n\nKariera zakończona.', [{ l: 'Menu', f: () => openMenu('home') }]);
+    const sa=matchScore[0],sb=matchScore[1];
+    advanceClubRound(won,sa,sb);
+    if(career.stage==='eliminated')return showRes('KONIEC SEZONU',body+'\n\nTwoja drużyna nie zajęła pierwszego miejsca w tabeli.',[{l:'Tabela ligi',f:()=>openMenu('career')},{l:'Menu',alt:1,f:()=>openMenu('home')}]);
+    if(career.stage==='nba')return showRes('MISTRZ HOOPS ARENA!',body+'\n\nAwansujesz do ligi NBA! Rozpoczyna się nowy etap, a rozwój zawodników zostaje z tobą.',[{l:'Liga NBA ▶',f:()=>openMenu('career')}]);
+    if(career.stage==='goat')return showRes('MISTRZ NBA!',body+'\n\nCzeka cię finał przeciwko Jordanowi, Kobe i LeBronowi.',[{l:'GOAT Challenge ▶',f:()=>openMenu('career')}]);
+    return showRes(won?'WYGRANA!':'REMIS / PORAŻKA',body+'\n\nZaktualizowano tabelę i wyniki pozostałych spotkań tej kolejki.',[{l:'Tabela i następny mecz ▶',f:()=>openMenu('career')},{l:'Rozwój',alt:1,f:()=>openMenu('dev')}]);
   }
   if (mode === 'tour') return tourMatchDone(won, body);
   showRes(won ? 'WYGRANA!' : 'PRZEGRANA', body, [
