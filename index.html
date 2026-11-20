@@ -102,6 +102,18 @@ select.dark, input.dark { background:#0a0a0c; color:#fff; border:1px solid #333;
 .pcard.used { opacity:.35; cursor:not-allowed; }
 .pcard.pick { box-shadow:0 0 0 3px #fff, 0 16px 34px rgba(224,35,27,.35); }
 .pcard canvas { width:100%; height:230px; display:block; border-radius:12px; }
+.pcard.draft { flex-basis:270px; padding:10px; overflow:hidden; border-radius:8px; border:1px solid #777; background:linear-gradient(145deg,#252a35,#11141c 55%,#08090d); box-shadow:0 12px 28px rgba(0,0,0,.35); }
+.pcard.draft.gold { border-color:#d6a84a; background:linear-gradient(145deg,#51401e,#20190d 58%,#090807); }
+.draft-top { display:flex; justify-content:space-between; align-items:center; color:#d7dbe4; font:700 10px Oswald,sans-serif; letter-spacing:.18em; padding:2px 4px 8px; }
+.draft-art { position:relative; height:218px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at 50% 78%,rgba(224,35,27,.34),transparent 60%),linear-gradient(180deg,#38404b,#171b24 72%,#0c0e13); border:1px solid rgba(255,255,255,.16); }
+.draft-art:after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.08) 48%,transparent 70%); }
+.draft-art img { width:100%; height:100%; object-fit:contain; position:relative; z-index:1; }
+.draft-art .pov { z-index:2; top:10px; left:12px; font-size:42px; }
+.draft-art .ppos { z-index:2; top:58px; left:14px; }
+.draft-foot { display:flex; justify-content:space-between; align-items:center; margin-top:7px; color:#b9bdc7; font:700 10px Oswald,sans-serif; letter-spacing:.12em; }
+.pcard.draft .pname { margin-top:7px; font-size:24px; }
+.pcard.draft .pfull { margin-bottom:9px; }
+
 .pov { position:absolute; top:18px; left:22px; font-family:Oswald; font-size:44px; line-height:1; text-shadow:0 3px 8px #000; }
 .ppos { position:absolute; top:62px; left:24px; font-size:12px; font-weight:700; letter-spacing:.1em; color:#fff; background:var(--red); padding:3px 8px; border-radius:4px; }
 .pname { font-family:Oswald; font-size:22px; text-transform:uppercase; margin:10px 2px 0; }
@@ -494,6 +506,23 @@ const SN = { acc:'Celność', three:'Rzut 3', dunk:'Wsady', block:'Blok', steal:
 const SKN = { sniper:'Snajper', posterizer:'Posterizer', lockdown:'Lockdown', glove:'Lepkie ręce',
   clutch:'Clutch', iron:'Żelazna kondycja', handles:'Magik dryblingu' };
 
+// Własne twarze PNG. Pliki trzymaj w tym samym katalogu co HTML.
+// Wariant 1 = portret na karcie, wariant 2 = profil w meczu.
+const FACE_IDS = new Set(['czechu','gruby','kapok','baret','tobis','stepino','faciek','dzefens','krycha','john','pardela','jarus','krzys','vtol']);
+const FACE_IMAGES = Object.create(null);
+function faceImage(id, variant) {
+  if (!FACE_IDS.has(id)) return null;
+  const key = id + variant;
+  if (!FACE_IMAGES[key]) {
+    const img = new Image();
+    img.src = `${id}${variant}.png`;
+    FACE_IMAGES[key] = img;
+  }
+  const img = FACE_IMAGES[key];
+  return img.complete && img.naturalWidth > 0 ? img : null;
+}
+
+
 // ============================ PROGRESJA ============================
 let PROG = {};
 try { PROG = JSON.parse(localStorage.getItem('hoops_prog_v1')) || {}; } catch (e) {}
@@ -819,7 +848,17 @@ function drawBody(e, fp) {
   ctx.fillText(String(p.num), (sh.x + hip.x) / 2, (sh.y + hip.y) / 2);
 
   seg(sh, hc, .06 * H, shade(fig.skin, .95));
-  drawHead(hc, H, f, fig, e);
+  const customHead = faceImage(p.id, 2);
+  if (customHead) {
+    // PNG jest domyślnie skierowany w lewo; odbijamy go, gdy zawodnik patrzy w prawo.
+    const hs = .255 * H;
+    ctx.save();
+    if (f > 0) { ctx.translate(hc.x, 0); ctx.scale(-1, 1); ctx.translate(-hc.x, 0); }
+    ctx.drawImage(customHead, hc.x - hs / 2, hc.y - hs * .53, hs, hs);
+    ctx.restore();
+  } else {
+    drawHead(hc, H, f, fig, e);
+  }
 
   legDraw(legN, bendN, 1);
   ctx.beginPath();
@@ -1761,10 +1800,25 @@ function renderCarousel() {
   for (const b of NORMAL_BASE) {
     const pg = getP(b.id), o = ovr(pg), c = document.createElement('div');
     c.className = 'pcard' + (o >= 80 ? ' gold' : '') + (PEND.slots[SEL] === b.id ? ' pick' : '') + (used.has(b.id) && PEND.slots[SEL] !== b.id ? ' used' : '');
-    const cvs = document.createElement('canvas'); cvs.width = 240; cvs.height = 300;
-    drawPortrait(cvs, pg);
-    c.appendChild(cvs);
-    c.insertAdjacentHTML('beforeend', `<div class="pov">${o}</div><div class="ppos">${b.pos}</div>`);
+    if (FACE_IDS.has(b.id)) {
+      const art = document.createElement('div'); art.className = 'draft-art';
+      const img = document.createElement('img'); img.alt = `Twarz zawodnika ${b.name}`; img.src = `${b.id}1.png`;
+      img.onerror = () => {
+        img.remove();
+        const fallback = document.createElement('canvas'); fallback.width = 240; fallback.height = 300;
+        drawPortrait(fallback, pg); art.appendChild(fallback);
+      };
+      art.appendChild(img);
+      art.insertAdjacentHTML('beforeend', `<div class="pov">${o}</div><div class="ppos">${b.pos}</div>`);
+      c.insertAdjacentHTML('beforeend', '<div class="draft-top"><span>HOOPS ARENA</span><span>PLAYER DRAFT</span></div>');
+      c.appendChild(art);
+      c.insertAdjacentHTML('beforeend', '<div class="draft-foot"><span>PROSPECT PROFILE</span><span>2026 CLASS</span></div>');
+    } else {
+      const cvs = document.createElement('canvas'); cvs.width = 240; cvs.height = 300;
+      drawPortrait(cvs, pg);
+      c.appendChild(cvs);
+      c.insertAdjacentHTML('beforeend', `<div class="pov">${o}</div><div class="ppos">${b.pos}</div>`);
+    }
     c.insertAdjacentHTML('beforeend', `<div class="pname">#${b.num} ${b.name}</div><div class="pfull">${b.full} · ${b.body.height} cm · ${b.body.weight} kg</div>`);
     for (const k of STAT) c.insertAdjacentHTML('beforeend',
       `<div class="prow"><span>${SN[k]}</span><div class="pbar"><i style="width:${pg.stats[k]}%"></i></div><b>${pg.stats[k]}</b></div>`);
