@@ -1,10 +1,32 @@
-// patch.js: twarze Fornal / Mugsy / Baret + zawodnik Stan Fabissor
+// patch.js: twarze Fornal / Mugsy / Baret / RJ Barrett + zawodnik Stan Fabissor
 // Ładować po głównym <script> gry.
 (function () {
-  // 1. Twarze PNG (nazwy plików = id + 1.png / 2.png)
-  ['fornal', 'mugsy_bogues', 'barrett', 'stanley'].forEach(id => FACE_IDS.add(id));
+  // Gra ładuje twarze jako `${id}1.png` i `${id}2.png`.
+  // Nadpisujemy faceImage, żeby obsłużyć też inne nazwy plików.
+  const FILE_NAMES = {
+    fornal:       'fornal',
+    mugsy_bogues: 'mugsy',
+    baret:        'baret',
+    rj_barrett:   'barrett',
+    stanley:      'stanley'
+  };
 
-  // 2. Nowy zawodnik: Stan Fabissor (id musi być takie jak nazwa plików: stanley1.png, stanley2.png)
+  Object.keys(FILE_NAMES).forEach(id => FACE_IDS.add(id));
+
+  const origFaceImage = faceImage;
+  faceImage = function (id, variant) {
+    if (!FILE_NAMES[id]) return origFaceImage(id, variant);
+    const key = id + variant;
+    if (!FACE_IMAGES[key]) {
+      const img = new Image();
+      img.src = `${FILE_NAMES[id]}${variant}.png`;
+      FACE_IMAGES[key] = img;
+    }
+    const img = FACE_IMAGES[key];
+    return img.complete && img.naturalWidth > 0 ? img : null;
+  };
+
+  // Stan Fabissor
   const raw = {
     id: 'stanley', name: 'Fabissor', full: 'Stan Fabissor (Stanley)', num: 21,
     color: '#1e5a3c', shorts: '#101010', sock: '#f2f2f2', shoe: '#1a1a1a', pos: 'PF',
