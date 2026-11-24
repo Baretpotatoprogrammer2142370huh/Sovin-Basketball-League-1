@@ -563,6 +563,9 @@ const RAW = [
   { id:'vtol', name:'VTOL', full:'Vitold Bolimeczek', num:77, color:'#7a1f2b', shorts:'#222222', sock:'#f2f2f2', shoe:'#1a1a1a', pos:'SF',
     h:180, w:66, s:{acc:40,three:36,dunk:46,block:30,steal:38,def:36,speed:56,stamina:58,handle:40,reb:44}, sk:[],
     f:{ skin:'#f0c8a0', hair:'#141414', hs:'curly_long', gl:null, build:0.82, belly:0, head:1 } },
+  { id:'ksywka', name:'stanley', full:'Stan Fabissor (Stanley)', num:21, color:'#1e5a3c', shorts:'#101010', sock:'#f2f2f2', shoe:'#1a1a1a', pos:'PF',
+    h:187, w:108, s:{acc:86,three:52,dunk:58,block:82,steal:80,def:76,speed:44,stamina:70,handle:40,reb:72}, sk:['glove'],
+    f:{ skin:'#e8b890', hair:'#3b2a1c', hs:'buzz', gl:null, build:1.45, belly:1, head:1.03 } },
   { id:'goat_jordan', name:'Jordan', full:'Michael Jordan', num:23, color:'#ce2027', shorts:'#ffffff', sock:'#ffffff', shoe:'#ce2027', pos:'SG',
     h:198, w:98, s:{acc:98,three:94,dunk:99,block:91,steal:98,def:99,speed:98,stamina:99,handle:97,reb:92}, sk:['sniper','posterizer','lockdown','clutch','handles'],
     f:{ skin:'#8d573d', hair:'#17120f', hs:'buzz', gl:null, beard:0, build:1.18, belly:0, head:1.03 } },
@@ -647,8 +650,7 @@ const SKN = { sniper:'Snajper', posterizer:'Posterizer', lockdown:'Lockdown', gl
 
 // Własne twarze PNG. Pliki trzymaj w tym samym katalogu co HTML.
 // Wariant 1 = portret na karcie, wariant 2 = profil w meczu.
-const FACE_IDS = new Set(['czechu','gruby','kapok','baret','tobis','stepino','faciek','dzefens','krycha','john','pardela','jarus','krzys','vtol']);
-const FACE_IMAGES = Object.create(null);
+const FACE_IDS = new Set(['czechu','gruby','kapok','baret','tobis','stepino','faciek','dzefens','krycha','john','pardela','jarus','krzys','vtol','fornal','mugsy_bogues','ksywka']);const FACE_IMAGES = Object.create(null);
 function faceImage(id, variant) {
   if (!FACE_IDS.has(id)) return null;
   const key = id + variant;
